@@ -120,6 +120,9 @@ void matchByHorizontalEpilines(const std::vector<cv::KeyPoint> &keyPoints1, cons
                                const cv::Mat &descriptors1, const cv::Mat &descriptors2, 
                                std::vector<cv::Point2f> &leftPoints, std::vector<cv::Point2f> &rightPoints)
 {
+    if(descriptors1.empty() || descriptors2.empty())
+        return;
+    
     //匹配
     cv::BFMatcher matcher(cv::NORM_HAMMING);
     std::vector<cv::DMatch> matches;
